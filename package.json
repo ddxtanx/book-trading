@@ -1,0 +1,20 @@
+{
+  "name": "book-trading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddxtanx/book-trading.git"
+  },
+  "author": "Garrett Credi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddxtanx/book-trading/issues"
+  },
+  "homepage": "https://github.com/ddxtanx/book-trading#readme"
+}
