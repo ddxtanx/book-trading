@@ -1,0 +1,11 @@
+.my-book{
+    height: 5%;
+}
+.book-div{
+    position: relative;
+    display: inline;
+}
+.del-book{
+    position:absolute;
+    left:0;
+}

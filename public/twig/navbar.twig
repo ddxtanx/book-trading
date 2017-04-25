@@ -1,0 +1,35 @@
+<div id="navbar">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-inline">
+           {% if loggedin==false or not loggedin is defined %}
+            <li>
+                <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            {%else%}
+            <li>
+                <p class="nav-link">Welcome, {{name}}</p>
+            </li>
+            <li>
+                <a class="nav-link" href="/allbooks">All Books!</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/mybooks">My Books!</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/settings"><span class="fa fa-cog"></span></a>
+            </li>
+            <li>
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {%endif%}
+        </ur>
+    </nav>
+</div>

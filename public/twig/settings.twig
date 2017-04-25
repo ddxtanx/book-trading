@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/navbar.css"/>
+        <link rel="stylesheet" href="/css/options.css"/>
+    </head>
+    <body>
+        <div id="page">
+            {% include './navbar.twig' %}
+            <div id="main-content">
+                <h2 id="update-title">Update Your Profile</h2>
+                <div class="alert {{type}}">
+                    {{message}}
+                </div>
+                <form method="POST" action="/settings" id="update-form">
+                    <label class='form-labels'>City</label>
+                    <br/>
+                    <input type="text" name="city" placeholder="Enter City Here:" class="form-control"/>
+                    <br/>
+                    <label class='form-labels'>State</label>
+                    <br/>
+                    <input type="text" name="state" placeholder="Enter State Here:" class="form-control"/>
+                    <br/>
+                    <button class="submit-button btn btn-success" type="submit">Submit</button>
+                    <hr/>
+                </form>
+                <h2 id="update-title">Change Your Password</h2>
+                <form method="POST" action="/settings" id="update-form">
+                    <label class='form-labels'>Current Password</label>
+                    <br/>
+                    <input type="password" name="curpass" placeholder="Enter Current Password Here:" class="form-control" required/>
+                    <br/>
+                    <label class='form-labels'>New Password</label>
+                    <br/>
+                    <input type="password" name="pass1" placeholder="Enter Password Here:" class="form-control" required/>
+                    <br/>
+                    <label class='form-labels'>New Password Again</label>
+                    <input type="password" name="pass2" placeholder="Enter Password Here:" class="form-control" required/>
+                    <br/>
+                    <button class="submit-button btn btn-success" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

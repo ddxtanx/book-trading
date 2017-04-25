@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/ddxtanx/book-trading/issues"
   },
-  "homepage": "https://github.com/ddxtanx/book-trading#readme"
+  "homepage": "https://github.com/ddxtanx/book-trading#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "client-sessions": "^0.8.0",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "multer": "^1.3.0",
+    "twig": "^1.10.4"
+  }
 }
