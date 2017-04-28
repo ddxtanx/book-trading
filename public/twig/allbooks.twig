@@ -8,10 +8,30 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/navbar.css"/>
         <link rel="stylesheet" href="/css/allbooks.css"/>
+        <script src="/js/allbooks.js"></script>
+        <script src="/js/tradeButtons.js"></script>
     </head>
     <body>
         <div id="page">
             {% include 'twig/navbar.twig' %}
+            <div id="main-content">
+                <div id="top-content">
+                    {% include 'twig/tradeButtons.twig' %}
+                </div>
+                <br/>
+                <div id="bottom-content">
+                    <div id="books">
+                    {%for book in books%}
+                        <div class="book-div" for-book="{{book.name}}">
+                            <img src="{{book.url}}" class='book'></img>
+                            {%if not (book.user==email) and (not book.traded) and (not (book.name in reqBooks))%}
+                            <button class="trade-book" for-book="{{book.name}}" for-user="{{book.user}}"><span class="fa fa-handshake-o"></span></button>
+                            {%endif%}
+                        </div>
+                    {%endfor%}
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

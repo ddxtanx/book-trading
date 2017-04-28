@@ -78,8 +78,23 @@ app.post("/delBook", function(req, res){
     checkIn(req, res, function(){
         var book = req.body.book;
         books.delBook(book, req, res);
-    })
-})
+    });
+});
+app.post("/trade", function(req, res){
+    checkIn(req, res, function(){
+        books.addTrade(req, res);
+    });
+});
+app.post("/cancel", function(req, res){
+    checkIn(req, res, function(){
+        books.cancel(req, res);  
+    });
+});
+app.post("/trades", function(req, res){
+   checkIn(req, res, function(){
+        books.trade(req, res);
+   }); 
+});
 app.get("/logout", function(req, res){
    req.session.reset();
    req.session.active = false;

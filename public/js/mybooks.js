@@ -14,6 +14,9 @@ function addListner(){
                 ele.hide('fast', function(){
                     ele.remove();
                 });
+                $("div[for-book='"+book+"']").hide('fast', function(){
+                    $("div[for-book='"+book+"']").remove();
+                });
             },
             error: function(){
                 alert("ERROR");

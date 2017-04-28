@@ -2,6 +2,7 @@ var mongo = require('mongodb').MongoClient;
 var user = process.env.USER;
 var password = process.env.PASSWORD;
 var mongoUri = "mongodb://"+user+":"+password+"@ds117311.mlab.com:17311/books";
+console.log(mongoUri)
 function reg(req, res){
     var email = req.body.email;
     var name = req.body.name;

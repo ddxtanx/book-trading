@@ -1,0 +1,15 @@
+.book-div{
+    position: relative;
+    display: inline;
+}
+.trade-book{
+    position:absolute;
+    left:0;
+}
+.trade{
+    background-color:#EEE;
+    width:15%;
+    border-radius:5px;
+    display: inline-block;
+    padding-right:0.5em;
+}

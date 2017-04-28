@@ -9,22 +9,23 @@
         <link rel="stylesheet" href="/css/navbar.css"/>
         <link rel="stylesheet" href="/css/mybooks.css"/>
         <script src="/js/mybooks.js"></script>
+        <script src="/js/tradeButtons.js"></script>
     </head>
     <body>
         <div id="page">
             {% include 'twig/navbar.twig' %}
             <div id="main-content">
                 <div id="top-content">
-                    <button type="button" class="btn btn-success">Incoming Trade Requests (0 incoming)</button>
-                    <button type="button" class="btn btn-info">Your Trade Requests (0 outstanding)</button>
+                    {% include 'twig/tradeButtons.twig' %}
                     <h1>My Books:</h1>
                     <hr/>
                     <input type="text" placeholder="Add Book" id="book-text"/>
                     <button type="button" class="btn btn-success" id="add-book">Add Book</button>
                 </div>
+                <br/>
                 <div id="bottom-content">
                     <div id="my-books">
-                        {%for book in data%}
+                        {%for book in books%}
                         <div class="book-div" for-book="{{book.name}}">
                             <img src="{{book.url}}" class='my-book'></img>
                             <button class="del-book" for-book="{{book.name}}"><span class="fa fa-times"></span></button>
