@@ -1,0 +1,14 @@
+#top-content{
+    text-align: center;
+    width:100%;
+    background-color: DodgerBlue;
+    color:White;
+    border-radius:5px;
+}
+.fa-6{
+    font-size:6em;
+}
+.feature{
+    border: 1px #DDD solid;
+    margin-bottom:.5em;
+}

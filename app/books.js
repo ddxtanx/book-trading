@@ -46,7 +46,6 @@ function getMyBooks(req, res){
             user: email
         }).toArray(function(err, data){
             if(err) throw err;
-            console.log(data);
             getTrades(data, trades, 'my', req, res);
         });
     });
@@ -74,6 +73,7 @@ function addBookMongo(book, url, req, res){
     });
 }
 function delBook(book, req, res){
+    console.log("Del request for "+book+" user "+req.session.email);
     mongo.connect(mongoUri, function(err, db){
         if(err) throw err;
         var books = db.collection('books');
@@ -109,30 +109,29 @@ function addTrade(req, res){
         };
         trades.insert(insData, function(err, data){
             if(err) throw err;
-            console.log(data);
             res.writeHead(200, {'Content-Type': 'text/json'});
             res.end(JSON.stringify(data));
         });
     });
 }
 function getTrades(bookData, trades, page, req, res){
-    console.log(bookData);
     var user = req.session.email;
     trades.find({
-        from:user,
-        completed: false
+        from:user
     }).toArray(function(err, reqData){
         if(err) throw err;
         trades.find({
-            to:user,
-            completed: false
+            to:user
         }).toArray(function(err, recData){
            if(err) throw err;
            var reqBooks = [];
            for(var x = 0; x<reqData.length; x++){
                reqBooks.push(reqData[x].book);
            }
-           res.render('twig/'+page+'books.twig', {loggedin: req.session.active, name:req.session.name, email: req.session.email, books: bookData, reqBooks: reqBooks, reqData:reqData, recData: recData});
+           var accTrades = reqData.filter(function(obj){
+               return obj.completed==true&&obj.from==user;
+           });
+           res.render('twig/'+page+'books.twig', {loggedin: req.session.active, name:req.session.name, email: req.session.email, books: bookData, reqBooks: reqBooks, reqData:reqData, recData: recData, accData: accTrades});
         });
     });
 }
@@ -141,14 +140,23 @@ function cancel(req, res){
     mongo.connect(mongoUri, function(err, db){
         if(err) throw err;
         var trades = db.collection('trades');
+        var books = db.collection('books');
         trades.remove({
             from: req.session.email,
             book: book
         }, function(err, data){
             if(err) throw err;
-            console.log(data);
-            res.writeHead(200, {'Content-Type': 'text/json'});
-            res.end(JSON.stringify(data));
+            books.update({
+                name: book
+            }, {
+                $set: {
+                    traded: false
+                }
+            }, function(err, data){
+                if(err) throw err;
+                res.writeHead(200, {'Content-Type': 'text/json'});
+                res.end(JSON.stringify(data)); 
+            });
         });
     });
 }

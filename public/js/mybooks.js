@@ -1,4 +1,9 @@
 var heightScale = 0.4;
+var reqBooks = [];
+for(var x = 0; x<requestedBooks.length; x++){
+    reqBooks.push(requestedBooks[x].book);
+}
+console.log(reqBooks);
 function addListner(){
     $(".del-book").off('click');
     $(".del-book").click(function(){
@@ -14,9 +19,19 @@ function addListner(){
                 ele.hide('fast', function(){
                     ele.remove();
                 });
-                $("div[for-book='"+book+"']").hide('fast', function(){
-                    $("div[for-book='"+book+"']").remove();
+                $("[for-book='"+book+"']").hide('fast', function(){
+                    $("[for-book='"+book+"']").remove();
                 });
+                console.log("Array: "+reqBooks+" book: "+book+" index: "+reqBooks.indexOf(book));
+                if(reqBooks.indexOf(book)!==-1){
+                    var pastReqs = $("#received").attr('amount');
+                    var newReqs = pastReqs - 1; 
+                    $("#received").attr('amount', newReqs);
+                    $("#received").text("Incoming Trade Requests ("+newReqs+" incoming)");
+                    reqBooks = reqBooks.filter(function(name){
+                        return name!==book;
+                    });
+                }
             },
             error: function(){
                 alert("ERROR");

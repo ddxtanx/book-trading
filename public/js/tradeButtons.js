@@ -1,3 +1,8 @@
+function decrementAmount(){
+    var am = $("#received").attr('amount')-1;
+    $("#received").attr('amount', am);
+    $("#received").text("Incoming Trade Requests ("+am+" incoming)");
+}
 $(document).ready(function(){
     $("#recTrades").hide();
     $("#reqTrades").hide();
@@ -35,6 +40,10 @@ $(document).ready(function(){
                 ele.hide('fast', function(){
                     ele.remove();
                 });
+                var pastReqs = $("#requested").attr('amount');
+                var newReqs = pastReqs - 1; 
+                $("#requested").attr('amount', newReqs);
+                $("#requested").text("Your Trade Requests ("+newReqs+" outstanding)");
             }
         });
     });
@@ -54,6 +63,7 @@ $(document).ready(function(){
                 ele.hide('fast', function(){
                     ele.remove();
                 });
+                decrementAmount();
             }
         });
     });
@@ -73,6 +83,7 @@ $(document).ready(function(){
                 ele.hide('fast', function(){
                     ele.remove();
                 });
+                decrementAmount();
             }
         });
     });
